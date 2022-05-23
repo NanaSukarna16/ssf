@@ -57,7 +57,7 @@
                                     <select class="form-control {{ $errors->first('grup_id') ? "is-invalid":""}}" name="grup_id">
                                         <option value="" selected disabled>Pilih Grup</option>
                                         @foreach ($grup as $item)
-                                        <option value="{{ $item->id }}" {{$item->id == $relawan['grup_id'] ? 'selected' : ''}}>{{ $item->nama }}</option>
+                                        <option value="{{ $item->id }}" {{$item->id == $relawan['grup_id'] ? 'selected' : ''}}>{{ $item->name }}</option>
                                         @endforeach
                                     </select>
 

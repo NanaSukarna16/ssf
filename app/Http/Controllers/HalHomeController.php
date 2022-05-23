@@ -23,10 +23,11 @@ class HalHomeController extends Controller
 
         $data = LandingPage::all();
         $data2 = Mitra::all();
-        $data3 = Video::all();
+        $data3 = Video::where('jenis', 'testimoni')->get();
+        $data4 = Video::where('jenis', 'penerima')->get();
 
         return view('home_admin.index', [
-            'lp' => $data, 'mitra' => $data2, 'video' => $data3
+            'lp' => $data, 'mitra' => $data2, 'video' => $data3, 'video2' => $data4
         ]);
     }
     public function index1()
@@ -108,7 +109,8 @@ class HalHomeController extends Controller
 
         $rules = [
             'video' => "required",
-            'judul_video' => "required"
+            'judul_video' => "required",
+            'jenis' => "required",
         ];
         $messages = [
             'required' => ":attribute tidak boleh kosong",
@@ -118,6 +120,7 @@ class HalHomeController extends Controller
 
         $this->new_video->judul_video = $request->judul_video;
         $this->new_video->video = $request->video;
+        $this->new_video->jenis = $request->jenis;
 
         $this->new_video->save();
         return redirect()->route('home_admin')->with('status', 'successfully created');

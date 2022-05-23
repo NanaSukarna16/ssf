@@ -250,6 +250,27 @@
                                 </div>
                             </div>
                         </div>
+                         <div class="form-group-inner mt-2">
+                            <div class="row">
+                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                    <label class="login2 pull-right pull-right-pro">Jenis Video</label>
+                                </div>
+                                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                                    <select class="form-control w-full" name="jenis" id="forBeasiswa" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">            
+                                        <option value="" selected disabled>Pilih Jenis Video</option>
+                                        <option value="testimoni">Testimoni Tokoh</option>
+                                        <option value="penerima">Penerima Manfaat</option>
+                                
+                                        @error('jenis')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                           
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                             <button type="submit" class="btn btn-primary">Tambahkan</button>
@@ -260,8 +281,48 @@
                 </div>
             </div>        
         </div> 
-        <div class="row ml-2 mr-2" >
+        <div class="row ml-5">
+             <p>Video Testimoni Tokoh</p>
+        </div>
+        <div class="row ml-2 mr-2" >         
             @forelse ($video as $item)
+            <div class="col-md-6 col-xl-3">
+                <div class="card order-card">
+                    <div class="card-block">                       
+                        <div class="mb-3">
+                            <iframe width="180" height="100" src="{{$item->video}}" 
+                            title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+                            </iframe>
+                        </div>
+                        <div>
+                           <p class="text-dark text-left">
+                              {{ $item->judul_video}}
+                           </p>
+                        </div>
+                        <div class="text-center">
+                            <a href="{{route('home_admin.edit3', $item->id)}}">
+                                <button class="btn btn-warning btn-outline-warning btn-icon"  data-target="#exampleModal2" type="button">
+                                    <i class="ti-pencil-alt"></i>
+                                </button>
+                            </a>       
+                            <a href="{{route('home_admin.destroy3', $item->id)}}">
+                                <button class="btn btn-danger btn-outline-danger btn-icon" onclick="return confirm('Apakah Anda Yakin Ingin Menghapus Data ini ?')">
+                                    <i class="ti-trash"></i>
+                                </button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @empty
+            <b>TIDAK ADA DATA</b> 
+            @endforelse
+        </div>
+        <div class="row ml-5">
+             <p>Video Penerima Manfaat</p>
+        </div>
+        <div class="row ml-2 mr-2" >
+            @forelse ($video2 as $item)
             <div class="col-md-6 col-xl-3">
                 <div class="card order-card">
                     <div class="card-block">                       

@@ -118,7 +118,7 @@
                     @forelse ($grup as $item)   
                     <tr>
                         <td>{{++$no}}</td>
-                        <td>{{$item->nama}}</td>
+                        <td>{{$item->name}}</td>
                         <td>{{$item->created_at}}</td>
                         <td>
                             <a href="{{route('grup.edit', $item->id)}}">

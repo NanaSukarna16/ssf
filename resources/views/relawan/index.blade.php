@@ -85,7 +85,7 @@
                         <td>{{++$no}}</td>
                         <td>{{$item->ktp}}</td>
                         <td>{{$item->nama}}</td>
-                        <td>{{ ($item->grup_id) ? $item->grup->nama : '-' }}</td>
+                        <td>{{ ($item->grup_id) ? $item->grup->name : '-' }}</td>
                         <td>{{$item->created_at}}</td>
                         <td>
                             <a href="{{route('relawan.edit', $item->id)}}">

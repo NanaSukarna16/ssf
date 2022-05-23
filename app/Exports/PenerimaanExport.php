@@ -58,7 +58,7 @@ class PenerimaanExport implements FromCollection, WithHeadings
                     'penerimaan.jumlah',
                     'users.nama as user',
                     'prog_penerimaan.nama as prog_penerimaan',
-                    'grup.nama as grup',
+                    'grup.name as grup',
                     //  'lembaga.nama_lembaga',
                     'rekening.bank',
                     'rekening.nama_pemilik_rekening',

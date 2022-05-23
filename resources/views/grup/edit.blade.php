@@ -92,7 +92,7 @@
             <div class="form-group row">
                 <label class="col-sm-2 col-form-label">Nama Grup</label>
                 <div class="col-sm-5">
-                    <input type="text" value="{{ $grup['nama']}}"  class="form-control {{ $errors->first('nama') ? "is-invalid":""}}" class="form-control" name="nama" placeholder="nama grup">
+                    <input type="text" value="{{ $grup['name']}}"  class="form-control {{ $errors->first('name') ? "is-invalid":""}}" class="form-control" name="nama" placeholder="nama grup">
                 </div>
             </div>
             <div class="form-group row">

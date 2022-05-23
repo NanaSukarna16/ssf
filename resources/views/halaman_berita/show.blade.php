@@ -44,25 +44,7 @@
                             </div>                      
                             @endforeach
                         </div>
-                      </div>
-                    
-                    {{-- <ul class="simple-post-list">
-                        <li>    
-                                <div class="post-image" >
-                                    <div class="img-thumbnail">
-                                        <img src="https://petik.or.id/asset/img/baru235.jpg" class="img-responsive img-keg">
-                                    </div>
-                                </div>
-                                <div class="post-info">
-                                    <a href="https://petik.or.id/berita/get_index1" class="lnk-secondary">Pengumuman Kelulusan Mahasantri Penerima Program Beasiswa Pesantren PeTIK Angkatan VIII Tahun Akademik 2020/2021</a>
-                                    <div class="post-meta">
-                                        <span class="label label-primary label-lg">2020-08-14</span>
-                                        <span class="label label-secondary label-lg">03:16:40</span>
-                                    </div>
-                                </div>
-                            </li>
-                    </ul> --}}
-
+                    </div>
 				</div>
 			</div>
 		</div>

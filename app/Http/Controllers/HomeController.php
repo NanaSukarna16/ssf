@@ -41,19 +41,19 @@ class HomeController extends Controller
         $program = Penerimaan::select('prog_penerimaan.nama')->join('prog_penerimaan', 'prog_penerimaan.id', 'penerimaan.prog_penerimaan_id')->groupBy('prog_penerimaan.nama')->orderBy('prog_penerimaan.id', 'ASC')->get();
 
         $relawan = User::orderBy('id', 'desc')->where('role', 'relawan')->get();
-        $countRelawan   = Penerimaan::selectRaw("sum(penerimaan.jumlah) as jumlah ,grup.nama as grup")
+        $countRelawan   = Penerimaan::selectRaw("sum(penerimaan.jumlah) as jumlah ,grup.name as grup")
             // ->join('users', 'penerimaan.users_id', 'users.id')
             ->join('grup', 'penerimaan.grup_id', 'grup.id')
-            ->groupBy('grup.nama')
+            ->groupBy('grup.name')
             // ->where('role', 'relawan')
             ->get();
 
         $countPerRelawan = Penerimaan::join('users', 'penerimaan.users_id', 'users.id')
             ->join('grup', 'penerimaan.grup_id', 'grup.id')
-            ->select('users.id as idUser', 'grup.nama as grup', 'users.role as role', 'users.nama as users', 'penerimaan.grup_id', DB::raw('sum(penerimaan.jumlah) as jumlah'))
+            ->select('users.id as idUser', 'grup.name as grup', 'users.role as role', 'users.nama as users', 'penerimaan.grup_id', DB::raw('sum(penerimaan.jumlah) as jumlah'))
             ->groupBy('users.id', 'users.nama', 'grup', 'role', 'penerimaan.grup_id')
             ->where('role', 'relawan')
-            ->orderBy('grup.nama', 'desc')->get();
+            ->orderBy('grup.name', 'desc')->get();
 
         $totalGrup = Penerimaan::sum('jumlah');
         $totalProgram   = Penerimaan::join('prog_penerimaan', 'penerimaan.prog_penerimaan_id', 'prog_penerimaan.id')

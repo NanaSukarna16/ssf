@@ -97,13 +97,17 @@ class PenerimaanController extends Controller
      */
     public function create()
     {
-        $relawan = User::orderBy('id', 'DESC')->where('role', 'relawan')->get();
+        $relawan  = User::where('role', 'relawan')->get();
         $lembaga = Lembaga::orderBy('id', 'DESC')->get();
         $donatur = Donatur::orderBy('id', 'DESC')->get();
         $relasi = Relasi::orderBy('id', 'DESC')->get();
         $rekening = Rekening::orderBy('id', 'DESC')->get();
         $program = Program::orderBy('id', 'DESC')->get();
-        return view('penerimaan.create', compact('relawan', 'lembaga', 'donatur', 'relasi', 'rekening', 'program'));
+        return view('penerimaan.create', [
+            'relawan' => $relawan, 'lembaga' => $lembaga, 'donatur' => $lembaga, 
+            'relasi' => $relasi, 'rekening' => $rekening, 'program' => $program
+        ]);
+        // return view('penerimaan.create', compact('relawan', 'lembaga', 'donatur', 'relasi', 'rekening', 'program'));
     }
 
     /**
@@ -152,6 +156,8 @@ class PenerimaanController extends Controller
         $this->new_penerimaan->nama_bs =  $request->nama_bs;
         $this->new_penerimaan->bukti = $bukti;
         $this->new_penerimaan->person_at = $request->person_at;
+
+        // dd($request->bukti);
 
         $this->new_penerimaan->save();
         return redirect()->route('penerimaan')->with('status', 'Penerimaan successfully created');
@@ -215,6 +221,7 @@ class PenerimaanController extends Controller
         $penerimaan_edit->jumlah =  $request->nominal;
         $penerimaan_edit->nama_bs =  $request->nama_bs;
         $penerimaan_edit->person_at =  $request->person_at;
+        // $penerimaan_edit->bukti = $bukti;
         $gambarLama = $penerimaan_edit->bukti;
 
         if (!$request->bukti) {

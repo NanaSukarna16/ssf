@@ -135,16 +135,16 @@
                 
                 <tr>
                   <td class="font-weight-bold">{{++$no1}}</td>
-                  <td>{{$g->nama}}</td>
+                  <td>{{$g->name}}</td>
                 <?php
                 $dana = [];
                 
-                if(in_array($g->nama, $grup_by))
+                if(in_array($g->name, $grup_by))
                 {
                   foreach($countRelawan as $inNo => $wkwk)
                   {
                     
-                    if($wkwk->grup == $g->nama)
+                    if($wkwk->grup == $g->name)
                     {
                       // ddd($wkwk->idUser);
                       $rp     = $wkwk->jumlah;
@@ -165,7 +165,7 @@
                   <td>Rp. {{ number_format($rp,0) }}</td>
 
                   @if (count($g->users) > 0)
-                  <td> <button onclick="viewGrup('{!! base64_encode($g->users) !!}', '{!! base64_encode($g->nama) !!}','{!! base64_encode($countPerRelawan) !!}','{!! base64_encode(json_encode($dana)) !!}')" type="button" rel="tooltip" class="btn btn-success btn-sm btn-round btn-icon">
+                  <td> <button onclick="viewGrup('{!! base64_encode($g->users) !!}', '{!! base64_encode($g->name) !!}','{!! base64_encode($countPerRelawan) !!}','{!! base64_encode(json_encode($dana)) !!}')" type="button" rel="tooltip" class="btn btn-success btn-sm btn-round btn-icon">
                     <i class="ti ti-angle-double-right"></i>
                   </button></td>
                   @else

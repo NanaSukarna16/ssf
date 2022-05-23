@@ -54,6 +54,27 @@
                     </div>
                 </div>
             </div>
+            <div class="form-group-inner mt-2">
+                <div class="row">
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                        <label class="login2 pull-right pull-right-pro">Jenis Video</label>
+                    </div>
+                    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                        <select class="form-control w-full" name="jenis" id="forBeasiswa" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">            
+                            <option value="" selected disabled>Pilih Jenis Video</option>
+                            <option value="testimoni">Testimoni Tokoh</option>
+                            <option value="penerima">Penerima Manfaat</option>
+                    
+                            @error('jenis')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </select>
+                    </div>
+                </div>
+            </div>
+                           
             <div class="modal-footer">
                 <button type="submit" class="btn btn-primary">Update</button>
             </div>

@@ -89,7 +89,7 @@
                                         <select class="form-control" name="relawan">
                                             <option selected disabled>Pilih relawan</option>
                                             @foreach ($relawan as $r)
-                                              <option value="{{ $r->id }}">{{ $r->nama }}</option>
+                                              <option value="{{ $r->id }}">{{ $r->nama}} - {{$r->grup['name']}}</option>
                                             @endforeach
                                         </select>
         
@@ -135,7 +135,7 @@
                                         <select class="form-control" name="donatur">
                                             <option selected disabled>Pilih Donatur</option>
                                             @foreach ($donatur as $r)
-                                              <option value="{{ $r->id }}">{{ $r->nama }}</option>
+                                              <option value="{{ $r->id }}">{{ $r->nama}}</option>
                                             @endforeach
                                         </select>
         

@@ -40,7 +40,7 @@
                         <div class="form-group row">
                             <label class="col-sm-3 col-form-label">Lembaga</label>
                             <div class="col-sm-8">
-                                <input type="text" value="{{ old('nama_lembaga')}}"  class="form-control {{ $errors->first('nama_lembaga') ? "is-invalid":""}}" class="form-control" name="nama_lembaga" placeholder="masukan nama lembaga"/>
+                                <input type="text" value="{{ old('nama_lembaga')}}"  class="form-control {{ $errors->first('nama_lembaga') ? "is-invalid":""}}"  name="nama_lembaga" placeholder="masukan nama lembaga"/>
                                 @error('nama_lembaga')
                                     <div class="alert alert-danger mt-2">
                                         {{ $message }}

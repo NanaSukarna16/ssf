@@ -59,8 +59,7 @@ class RelawanController extends Controller
         // ->orWhere('role', 'LIKE', 'inputer')
         // ->simplePaginate($batas);
 
-        $data1 = User::Where('role', 'LIKE', 'inputer')
-        ->simplePaginate($batas);
+        $data1 = User::simplePaginate($batas);
 
         // menghitung total data
         $jumlah = $data1->count();

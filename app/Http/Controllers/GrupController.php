@@ -26,7 +26,7 @@ class GrupController extends Controller
         // $batas1 = $request->page;
 
         // query tampil berdasarkan request nama;
-        $data = Grup::where('nama', 'LIKE', "%$tangkap%")->orderBy('id', 'DESC')->simplePaginate($batas);
+        $data = Grup::where('name', 'LIKE', "%$tangkap%")->orderBy('id', 'DESC')->simplePaginate($batas);
 
         // urutkan nomor sesuai total data
         $no = $batas * ($data->currentPage() - 1);
@@ -63,7 +63,7 @@ class GrupController extends Controller
 
         $this->validate($request, $rules, $messages);
 
-        $this->new_grup->nama = $request->nama;
+        $this->new_grup->name = $request->nama;
 
 
         $this->new_grup->save();
@@ -107,7 +107,7 @@ class GrupController extends Controller
     {
 
         $grup_edit = Grup::find($id);
-        $grup_edit->nama = $request->nama;
+        $grup_edit->name = $request->nama;
 
         $grup_edit->save();
         return redirect()->route('grup')->with('status', 'Grup successfully updated');
