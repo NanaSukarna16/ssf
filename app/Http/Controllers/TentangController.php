@@ -2,18 +2,41 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Tentang;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\DB;
 
 class TentangController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public $new_tentang;
+    public function __construct()
+    {
+        $this->new_tentang = new Tentang();
+    }
+
     public function index()
     {
-        return view('halaman_tentang.index');
+        // Tangkap request nama
+        $tangkap = request()->cari;
+        // $batas1 = $request->page;
+        $batas = 8;
+        // query tampil berdasarkan request nama;
+        $data = Tentang::orderBy('id', 'ASC')->simplePaginate($batas);
+        
+        $no = $batas * ($data->currentPage() - 1);
+        return view('tentang.index', [
+            'tentang' => $data, 'no' => $no
+        ]);
+    }
+
+    public function index1()
+    {
+        $data = Tentang::all();
+
+        return view('template_fe.app', [
+            'tentang' => $data
+        ]);
     }
 
     /**
@@ -34,7 +57,17 @@ class TentangController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $rules = [
+            'nama' => "required",    
+        ];
+        $messages = [
+            'required' => ":attribute tidak boleh kosong"
+        ];
+
+        $this->validate($request, $rules, $messages);  
+        $this->new_tentang->nama = $request->nama;
+        $this->new_tentang->save();
+        return redirect()->route('tentang_admin')->with('status', 'successfully created');
     }
 
     /**
@@ -56,7 +89,10 @@ class TentangController extends Controller
      */
     public function edit($id)
     {
-        //
+        $tentang_edit = Tentang::find($id);
+        return view('tentang.edit', [
+            'tentang' => $tentang_edit
+        ]);
     }
 
     /**
@@ -68,7 +104,10 @@ class TentangController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $tentang_edit = Tentang::find($id);
+        $tentang_edit->nama = $request->nama;
+        $tentang_edit->save();
+        return redirect()->route('tentang_admin')->with('status', 'successfully updated');
     }
 
     /**
@@ -79,6 +118,8 @@ class TentangController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $tentang_hapus = Tentang::findOrFail($id);
+        $tentang_hapus->delete();
+        return redirect()->route('tentang_admin')->with('status', 'successfully deleted');
     }
 }

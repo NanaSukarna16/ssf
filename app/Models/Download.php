@@ -5,8 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Tentang extends Model
+class Download extends Model
 {
     use HasFactory;
-    protected $table = 'tentang';
+    protected $table = 'download';
+    protected $fillable = ['nama', 'file', 'img', 'craeted_at', 'updated_at'];
 }
+ 

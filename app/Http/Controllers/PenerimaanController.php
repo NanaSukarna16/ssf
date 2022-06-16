@@ -40,6 +40,7 @@ class PenerimaanController extends Controller
         $data = Penerimaan::with([
             'user',
             'program',
+            'campaign',
             'grup',
             'lembaga',
             'rekening',

@@ -153,10 +153,7 @@
             </form>  
         </div> 
     </div>        
-    @endif
-
-     
-          
+    @endif     
         <div class="card-header-right">
             <ul class="list-unstyled card-option">
                 <li><i class="fa fa-chevron-left"></i></li>
@@ -198,15 +195,23 @@
                     <tr>
                         <td>{{++$no}}</td>
                         <td>{{$item->reff}}</td>
-                        <td>{{$item->user->nama}} - {{ $item->relasi->nama }}</td>
+                        @if(empty($item->user) && empty($item->relasi))
+                            <td>-</td>
+                        @else
+                            <td>{{$item->user->nama}} - {{ $item->relasi->nama }}</td>
+                        @endif
                         @if(!empty($item->donatur))
                             <td>{{ $item->donatur->nama ?? '' }}</td>
                         @else
                             <td>{{ $item->lembaga->nama_lembaga ?? '-' }}</td>
                         @endif
-                        <td>
-                            {{ $item->program->nama ?? '-' }} <br>           
-                        </td>
+                        @if(empty($item->program) )
+                            <td> {{ $item->campaign->nama }}</td>
+                        @else
+                            <td>
+                                {{ $item->program->nama ?? '-' }} <br>           
+                            </td>
+                        @endif
                         <td>
                             @if(!empty($item->rekening))
                                 {{$item->rekening->bank}} - {{$item->rekening->nama_pemilik_rekening}} - {{$item->rekening->kegunaan}}

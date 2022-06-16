@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Berita;
+use App\Models\Tentang;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\DB;
@@ -29,8 +30,9 @@ class BeritaController extends Controller
         // buat paginition
         $batas = 9;
         $data = Berita::orderBy('id', 'DESC')->simplePaginate($batas);
+        $data2 = Tentang::all();
         return view('halaman_berita.index', [
-            'berita' => $data
+            'berita' => $data, 'tentang' => $data2
         ]);
     }
 
@@ -87,7 +89,7 @@ class BeritaController extends Controller
     public function show($id)
     {
         $berita_detail = Berita::find($id);
-
+        $data = Tentang::all();
         $berita_lainnya = Berita::where('id', 'not like', $berita_detail->id)
             ->limit(8)
             ->orderBy('id', 'DESC')
@@ -95,7 +97,7 @@ class BeritaController extends Controller
 
         // dd($berita_lainnya)
         return view('halaman_berita.show', [
-            'berita_detail' => $berita_detail, 'berita_lainnya' => $berita_lainnya
+            'berita_detail' => $berita_detail, 'berita_lainnya' => $berita_lainnya, 'tentang' => $data
         ]);
     }
 
@@ -108,7 +110,6 @@ class BeritaController extends Controller
     public function edit($id)
     {
         $berita_edit = Berita::find($id);
-
 
         return view('berita_admin.edit', [
             'berita' => $berita_edit

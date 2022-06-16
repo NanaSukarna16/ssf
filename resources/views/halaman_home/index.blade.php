@@ -69,136 +69,120 @@
 </div> --}}
 
 <!-- Start Products  -->
-{{-- <div class="products-box">
+<div class="products-box">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
                 <div class="title-all text-center">
-                    <h1>Fruits & Vegetables</h1>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet lacus enim.</p>
+                    <h1>PROGRAM SEBI SOCIAL FUND</h1>
                 </div>
             </div>
+        </div>
+        <div class="row special-list">
+            @foreach ($program as $item) 
+            <div class="col-lg-3 col-md-6 special-grid best-seller" data-aos="fade-up" data-aos-duration="2000">
+                <div class="products-single fix">
+                    <div class="box-img-hover">
+                        <div class="type-lb">
+                            <a href="{{ route('donasi2', $item->id)}}">
+                                <p class="sale"  style="background-color: #fbb714;">DONASI SEKARANG</p>
+                            </a>
+                        </div>
+                        <a href="{{ route('program.show', $item->id)}}">
+                            <img src="{{asset('storage/campaign/'.$item->img)}}" class="img-fluid" alt="Image">
+                        </a>
+                        <div class="mask-icon" style="font-size: 9px">
+                            <ul>
+                                <li><a style="background-color: #fbb714" href="{{ route('program.show', $item->id)}}" data-toggle="tooltip" data-placement="left" title="Lihat"><i class="fas fa-eye"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="why-text">
+                        <a href="{{ route('program.show', $item->id)}}">
+                            <h3 class="mb-3"><b>{{ $item->nama }}</b></h3>
+                        </a>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" style="width: {{ $item->persen }}%;"></div>
+                        </div>
+                        <div class="float-right mt-2">
+                            <p><b>Durasi</b></p>
+                            <h5 style="background-color: #fbb714; font-size: 10px"> {{ \Carbon\Carbon::parse( $item->waktu_awal )->diffInDays( $item->waktu ) }} Hari Lagi</h5>
+                        </div>
+                        <p class="mt-2"><b>Terkumpul</b></p>
+                        <h5 style="background-color: #fbb714; font-size: 10px"> Rp {{number_format($item->jumlah ?? 0, 2)}}</h5>
+                    </div>
+                </div>
+            </div>               
+            @endforeach
         </div>
         <div class="row">
             <div class="col-lg-12">
                 <div class="special-menu text-center">
                     <div class="button-group filter-button-group">
-                        <button class="active" data-filter="*">All</button>
-                        <button data-filter=".top-featured">Top featured</button>
-                        <button data-filter=".best-seller">Best seller</button>
+                        <a href="{{ route('program_web')}}">
+                            <button style="background-color: #fbb714" class="active" data-filter="*">Program Lainnya</button>
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="row special-list">
-            <div class="col-lg-3 col-md-6 special-grid best-seller">
-                <div class="products-single fix">
-                    <div class="box-img-hover">
-                        <div class="type-lb">
-                            <p class="sale">Sale</p>
-                        </div>
-                        <img src="{{ asset('template_fe') }}/images/img-pro-01.jpg" class="img-fluid" alt="Image">
-                        <div class="mask-icon">
-                            <ul>
-                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i
-                                            class="fas fa-eye"></i></a></li>
-                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="Compare"><i
-                                            class="fas fa-sync-alt"></i></a></li>
-                                <li><a href="#" data-toggle="tooltip" data-placement="right"
-                                        title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
-                            </ul>
-                            <a class="cart" href="#">Add to Cart</a>
-                        </div>
-                    </div>
-                    <div class="why-text">
-                        <h4>Lorem ipsum dolor sit amet</h4>
-                        <h5> $7.79</h5>
-                    </div>
+    </div>
+</div>
+<!-- End Products  -->
+
+
+<!-- Start Blog  -->
+{{-- <div class="latest-blog">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="title-all text-center">
+                    <h1>PROGAM SEBI SOCIAL FUND</h1>
                 </div>
             </div>
-
-            <div class="col-lg-3 col-md-6 special-grid top-featured">
-                <div class="products-single fix">
-                    <div class="box-img-hover">
-                        <div class="type-lb">
-                            <p class="new">New</p>
+        </div>
+        <div class="row">
+            @foreach ($program as $item)        
+            <div class="col-md-6 col-lg-4 col-xl-4">   
+                <div class="card mt-3">
+                        <a href="#" class="pop">
+                            <img style="max-height: 140px;" src="{{asset('storage/campaign/'.$item->img)}}" class="card-img-top" alt="...">
+                        </a>
+                      <div class="card-body">
+                        <h3 class="card-title"> <a href="#"><strong>{{ $item->nama }}</strong> </a> </h3>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" style="width: {{ $item->persen }}%;">{{ $item->persen }}%</div>
                         </div>
-                        <img src="{{ asset('template_fe') }}/images/img-pro-02.jpg" class="img-fluid" alt="Image">
-                        <div class="mask-icon">
-                            <ul>
-                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i
-                                            class="fas fa-eye"></i></a></li>
-                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="Compare"><i
-                                            class="fas fa-sync-alt"></i></a></li>
-                                <li><a href="#" data-toggle="tooltip" data-placement="right"
-                                        title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
-                            </ul>
-                            <a class="cart" href="#">Add to Cart</a>
+                        <div class="mt-3">
+                            <p class="card-text mt-3" style="float: left">Terkumpul <br> <b style="color: darkorange">Rp {{number_format($item->jumlah ?? 0, 2)}}</b> </p>
+                            <p class="card-text mt-3" style="float: right">Durasi <br> <b style="color: darkorange">{{ \Carbon\Carbon::parse( $item->waktu_awal )->diffInDays( $item->waktu ) }} Hari Lagi</b> </p>
                         </div>
-                    </div>
-                    <div class="why-text">
-                        <h4>Lorem ipsum dolor sit amet</h4>
-                        <h5> $9.79</h5>
-                    </div>
-                </div>
+                        <div class="text-center" style="margin-top: 90px">
+                            <button type="button" style="margin-top: 90px; background-color: darkorange;" class="btn text-center text-white" data-toggle="button" aria-pressed="false" autocomplete="off">
+                                <strong>Donasi Sekarang</strong> 
+                            </button>
+                        </div>  
+                      </div>
+                       
+                </div>     
             </div>
-
-            <div class="col-lg-3 col-md-6 special-grid top-featured">
-                <div class="products-single fix">
-                    <div class="box-img-hover">
-                        <div class="type-lb">
-                            <p class="sale">Sale</p>
-                        </div>
-                        <img src="{{ asset('template_fe') }}/images/img-pro-03.jpg" class="img-fluid" alt="Image">
-                        <div class="mask-icon">
-                            <ul>
-                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i
-                                            class="fas fa-eye"></i></a></li>
-                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="Compare"><i
-                                            class="fas fa-sync-alt"></i></a></li>
-                                <li><a href="#" data-toggle="tooltip" data-placement="right"
-                                        title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
-                            </ul>
-                            <a class="cart" href="#">Add to Cart</a>
-                        </div>
-                    </div>
-                    <div class="why-text">
-                        <h4>Lorem ipsum dolor sit amet</h4>
-                        <h5> $10.79</h5>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-3 col-md-6 special-grid best-seller">
-                <div class="products-single fix">
-                    <div class="box-img-hover">
-                        <div class="type-lb">
-                            <p class="sale">Sale</p>
-                        </div>
-                        <img src="{{ asset('template_fe') }}/images/img-pro-04.jpg" class="img-fluid" alt="Image">
-                        <div class="mask-icon">
-                            <ul>
-                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i
-                                            class="fas fa-eye"></i></a></li>
-                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="Compare"><i
-                                            class="fas fa-sync-alt"></i></a></li>
-                                <li><a href="#" data-toggle="tooltip" data-placement="right"
-                                        title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
-                            </ul>
-                            <a class="cart" href="#">Add to Cart</a>
-                        </div>
-                    </div>
-                    <div class="why-text">
-                        <h4>Lorem ipsum dolor sit amet</h4>
-                        <h5> $15.79</h5>
-                    </div>
+            @endforeach
+        </div>
+        <div class="row mt-3">
+            <div class="col-lg-12">
+                <div class="title-all text-center">
+                    <a href="{{ route('program_web')}}">
+                        <button type="submit" class="btn btn-warning" style="background-color: darkorange; color: white">Program Lainnya</button>
+                    </a>
                 </div>
             </div>
         </div>
     </div>
 </div> --}}
-<!-- End Products  -->
+<!-- End Blog  -->
+
+
 
 <!-- Start Blog  -->
 <div class="latest-blog">
@@ -206,12 +190,83 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="title-all text-center">
-                    <h1>Video Sahabat Wakaf</h1>
+                    <h1>Berita SEBI SOCIAL FUND</h1>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            @foreach ($berita_terbaru as $item)
+                <div class="col-md-6 col-lg-4 col-xl-4"  data-aos="fade-up" data-aos-anchor-placement="center-bottom">             
+                    <div class="card mt-3">
+                        <a href="{{ route('berita.show', $item->id )}}">
+                            <img style="max-height: 180px;" src="{{asset('storage/berita/'.$item->img_berita)}}" class="card-img-top" alt="...">
+                        </a>
+                      <div class="card-body">
+                        <h3 class="card-title"> <a href="{{ route('berita.show', $item->id )}}"><strong>{{ $item->judul_berita}}</strong> </a> </h3>
+                        <p class="card-text">{{ \Carbon\Carbon::parse($item->created_at)->translatedFormat(' d F Y') }}</p>
+                      </div>
+                    </div>        
+                </div>
+            @endforeach
+        </div>
+        <div class="row mt-2">
+            <div class="col-lg-12">
+                <div class="title-all text-center">
+                    <a href="{{ route('berita')}}">
+                        <button type="submit" class="btn btn-warning" style="background-color: darkorange; color: white">Berita Lainnya</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Blog  -->
+
+
+<!-- Start Blog  -->
+<div class="latest-blog">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="title-all text-center">
+                    <h1>Video Testimonial</h1>
                 </div>
             </div>
         </div>
         <div class="row">
             @foreach ($video as $item)
+            <div class="col-md-6 col-lg-4 col-xl-4"> 
+                <iframe width="360" height="200" src="{{ $item->video }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <h3> <strong>{{ $item->judul_video }} </strong>  </h3>
+            </div>
+            @endforeach
+        </div>
+    </div>
+</div>
+<!-- End Blog  -->
+
+    <div class="row" style="background-color: orange">
+        <div class="col-lg-12">
+            <div class="title-all text-center">
+                <h1 class="text-white mt-4">Jumlah Donatur SEBI SOCIAL FUND</h1>
+                <img style="width: 60px;" src="{{asset('storage/donatur.png')}}" class="card-img-top" alt="...">
+                <h1 class="text-white mt-4"><?php echo $jumlahDonatur ?> Donatur</h1>
+            </div>
+        </div>
+    </div>
+
+<!-- Start Blog  -->
+<div class="latest-blog">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="title-all text-center">
+                    <h1>Video Penerima Manfaat</h1>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            @foreach ($video2 as $item)
             <div class="col-md-6 col-lg-4 col-xl-4"> 
                 <iframe width="360" height="200" src="{{ $item->video }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 <h3> <strong>{{ $item->judul_video }} </strong>  </h3>

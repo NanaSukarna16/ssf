@@ -224,7 +224,7 @@
                                             <span class="pcoded-mcaret"></span>
                                         </a>
                                     </li>
-                                     <li>
+                                    <li>
                                         <a href="{{ route('user') }}">
                                             <span class="pcoded-micon"><i class="ti-layers"></i><b>FC</b></span>
                                             <span class="pcoded-mtext" data-i18n="nav.form-components.main">Manage User</span>
@@ -235,6 +235,23 @@
 
                                 <div class="pcoded-navigatio-lavel" data-i18n="nav.category.forms">Kelola Web</div>
                                 <ul class="pcoded-item pcoded-left-item">
+                                    <li class="pcoded-hasmenu">
+                                        <a href="javascript:void(0)">
+                                            <span class="pcoded-micon"><i class="ti-layout-grid2-alt"></i></span>
+                                            <span class="pcoded-mtext"  data-i18n="nav.basic-components.main">Tentang Kami</span>
+                                            <span class="pcoded-mcaret"></span>
+                                        </a>
+                                        <ul class="pcoded-submenu">
+                                            <li class="#">
+                                                <a href="{{ route('tentang_admin') }}">
+                                                    <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                                    <span class="pcoded-mtext" data-i18n="nav.basic-components.alert">Tentang Kami</span>
+                                                    <span class="pcoded-mcaret"></span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+
                                     <li>
                                         <a href="{{ route('home_admin')}}">
                                             <span class="pcoded-micon"><i class="ti-layers"></i><b>FC</b></span>
@@ -250,16 +267,16 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="#">
+                                        <a href="{{ route('berita_admin')}}">
                                             <span class="pcoded-micon"><i class="ti-layers"></i><b>FC</b></span>
-                                            <span class="pcoded-mtext" data-i18n="nav.form-components.main">Halaman Donasi</span>
+                                            <span class="pcoded-mtext" data-i18n="nav.form-components.main">Halaman Berita</span>
                                             <span class="pcoded-mcaret"></span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="{{ route('berita_admin')}}">
+                                        <a href="{{ route('download') }}">
                                             <span class="pcoded-micon"><i class="ti-layers"></i><b>FC</b></span>
-                                            <span class="pcoded-mtext" data-i18n="nav.form-components.main">Halaman Berita</span>
+                                            <span class="pcoded-mtext" data-i18n="nav.form-components.main">Halaman Download</span>
                                             <span class="pcoded-mcaret"></span>
                                         </a>
                                     </li>

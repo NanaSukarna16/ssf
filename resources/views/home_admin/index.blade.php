@@ -120,7 +120,7 @@
             <b>TIDAK ADA DATA</b> 
             @endforelse
         </div> 
-       {{-- akhir landing page --}}
+        {{-- akhir landing page --}}
 
        {{-- Awal Mitra --}}
         <div class="card-header">
@@ -200,7 +200,7 @@
         {{--Akhir Mitra  --}}
 
          {{-- Awal Video--}}
-         <div class="card-header">
+        <div class="card-header">
             <h5>Video Sahabat Wakaf</h5> <br>
             <button style="margin-top: 10px" type="button"  class="btn hor-grd btn-grd-info" data-toggle="modal" data-target="#exampleModal3">
                 <i class="fa fa-plus "></i> Tambah Data
@@ -250,7 +250,7 @@
                                 </div>
                             </div>
                         </div>
-                         <div class="form-group-inner mt-2">
+                        <div class="form-group-inner mt-2">
                             <div class="row">
                                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
                                     <label class="login2 pull-right pull-right-pro">Jenis Video</label>

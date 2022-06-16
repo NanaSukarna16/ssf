@@ -5,8 +5,13 @@ namespace App\Http\Controllers;
 use App\Models\LandingPage;
 use App\Models\Mitra;
 use App\Models\Video;
+use App\Models\Berita;
+use App\Models\Donatur;
+use App\Models\Tentang;
+use App\Models\Penerimaan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\DB;
 
 class HalHomeController extends Controller
 {
@@ -20,7 +25,6 @@ class HalHomeController extends Controller
 
     public function index()
     {
-
         $data = LandingPage::all();
         $data2 = Mitra::all();
         $data3 = Video::where('jenis', 'testimoni')->get();
@@ -32,14 +36,20 @@ class HalHomeController extends Controller
     }
     public function index1()
     {
-
-
         $data = LandingPage::all();
         $data2 = Mitra::all();
-        $data3 = Video::all();
+        $data3 = Video::where('jenis', 'testimoni')->get();
+        $data5 = Video::where('jenis', 'penerima')->get();
+        $data4 = Berita::limit('3')->orderBy('id', 'DESC')->get();
+        $data6 = Tentang::all();
+        $jumlah = Donatur::count();
+        $totalProgram   = Penerimaan::join('campaign', 'campaign_id', 'campaign.id')
+            ->select('campaign.id as id', 'campaign.waktu','campaign.nama as nama', DB::raw('sum(penerimaan.jumlah) /campaign.target_jumlah * 100 as persen'), DB::raw('sum(penerimaan.jumlah) as jumlah'), 'campaign.target_jumlah as target', 'campaign.img as img')
+            ->groupByRaw('nama, target, img, waktu, id')->limit('4')->orderBy('id', 'DESC')->get();
 
         return view('halaman_home.index', [
-            'home' => $data, 'mitra' => $data2, 'video' => $data3
+            'home' => $data, 'mitra' => $data2, 'video' => $data3, 'berita_terbaru' => $data4,
+            'video2' => $data5, 'jumlahDonatur' => $jumlah, 'program' => $totalProgram, 'tentang' => $data6
         ]);
     }
 
@@ -233,6 +243,7 @@ class HalHomeController extends Controller
         $video_edit = Video::find($id);
         $video_edit->judul_video = $request->judul_video;
         $video_edit->video = $request->video;
+        $video_edit->jenis = $request->jenis;
 
         $video_edit->save();
         return redirect()->route('home_admin')->with('status', 'successfully updated');

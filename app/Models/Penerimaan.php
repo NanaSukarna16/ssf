@@ -39,10 +39,11 @@ class Penerimaan extends Model
         return $this->belongsTo(User::class, 'users_id', 'id');
     }
 
-    // public function program()
-    // {
-    //     return $this->belongsTo(Program::class, 'prog_penerimaan_id', 'id');
-    // }
+    public function campaign()
+    {
+        return $this->belongsTo(Campaign::class, 'campaign_id', 'id');
+    }
+
     public function program()
     {
         return $this->belongsTo(Program::class, 'prog_penerimaan_id', 'id');

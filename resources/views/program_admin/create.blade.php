@@ -67,6 +67,19 @@
                         </div>
                 </div>
                 <div class="col-sm-6">
+                        <div class="form-group row">
+                            <label class="col-sm-4 col-form-label">Target Jumlah</label>
+                            <div class="col-sm-8">
+                                <input type="number" name="target" class="form-control {{ $errors->first('target') ? "is-invalid":""}}">
+                                    @error('target')
+                                    <div class="alert alert-danger mt-2">
+                                        {{ $message }}
+                                    </div>
+                                    @enderror
+                            </div>
+                        </div>
+                </div> 
+                <div class="col-sm-6">
                     <div class="form-group row">
                             <label class="col-sm-4 col-form-label">Detail Campaign</label>
                             <div class="col-sm-8">
@@ -78,7 +91,35 @@
                                 @enderror
                             </div>
                     </div>  
-                </div> 
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group row">
+                            <label class="col-sm-4 col-form-label">Link Video</label>
+                            <div class="col-sm-8">
+                                <input type="text" name="video" class="form-control {{ $errors->first('video') ? "is-invalid":""}}">
+                                @error('video')
+                                <div class="alert alert-danger mt-2">
+                                    {{ $message }}
+                                </div>
+                                @enderror
+                            </div>
+                    </div>  
+                </div>
+                {{-- <div class="form-group-inner mt-2">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                            <label class="login2 pull-right pull-right-pro">Link Video</label>
+                        </div>
+                        <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                            <input type="text" name="video" class="form-control {{ $errors->first('video') ? "is-invalid":""}}">
+                            @error('video')
+                            <div class="alert alert-danger mt-2">
+                                {{ $message }}
+                            </div>
+                            @enderror
+                        </div>
+                    </div>
+                </div> --}}
                 {{-- <div class="col-sm-6"> 
                     <div class="form-group row">
                         <label class="col-sm-4 col-form-label">Program</label> 

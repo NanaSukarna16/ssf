@@ -5,16 +5,19 @@ namespace App\Http\Controllers;
 use App\Models\Campaign;
 use App\Models\Program;
 use App\Models\Penerimaan;
+use App\Models\Tentang;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\DB;
 
+
 class CampaignController extends Controller
 {
-    public $new_campaign;
+    public $new_campaig, $new_penerimaan;
     public function __construct()
     {
         $this->new_campaign = new Campaign();
+        $this->new_penerimaan = new Penerimaan();
     }
 
     public function index()
@@ -22,9 +25,8 @@ class CampaignController extends Controller
         $data = Campaign::all();
 
         $totalProgram   = Penerimaan::join('campaign', 'campaign_id', 'campaign.id')
-            // ->select('*')
-            ->select('campaign.nama as nama', DB::raw('sum(penerimaan.jumlah) /campaign.target_jumlah * 100 as persen'), DB::raw('sum(penerimaan.jumlah) as jumlah'), 'campaign.target_jumlah as target', 'campaign.img as img')
-            ->groupByRaw('nama, target, img')->get();
+            ->select('campaign.id as id', 'campaign.waktu','campaign.nama as nama', DB::raw('sum(penerimaan.jumlah) /campaign.target_jumlah * 100 as persen'), DB::raw('sum(penerimaan.jumlah) as jumlah'), 'campaign.target_jumlah as target', 'campaign.img as img')
+            ->groupByRaw('nama, target, img, waktu, id')->get();
 
         // dd($data);
         return view('program_admin.index', [
@@ -33,11 +35,15 @@ class CampaignController extends Controller
     }
     public function index1()
     {
-
-        // buat paginition
-        // $batas = 9;
-        // $data = Berita::orderBy('id', 'DESC')->simplePaginate($batas);
-        return view('halaman_program.index');
+        $data = Tentang::all();
+        $totalProgram   = Penerimaan::join('campaign', 'campaign_id', 'campaign.id')
+            // ->select('*')
+            ->select('campaign.id as id', 'campaign.waktu','campaign.nama as nama', DB::raw('sum(penerimaan.jumlah) /campaign.target_jumlah * 100 as persen'), DB::raw('sum(penerimaan.jumlah) as jumlah'), 'campaign.target_jumlah as target', 'campaign.img as img')
+            ->groupByRaw('nama, target, img, waktu, id')->get();
+       
+        return view('halaman_program.index',[
+            'campaign' => $totalProgram, 'tentang' => $data
+        ]);
     }
 
     /**
@@ -63,9 +69,10 @@ class CampaignController extends Controller
     {
         $rules = [
             'img' => "required|mimes:png,jpg,jpeg,webp|",
-            'waktu' => "required",
+            // 'waktu' => "required",
             'detail' => "required",
-            'nama' => "required"
+            'nama' => "required",
+            // 'target' => "required"
         ];
         $messages = [
             'required' => ":attribute tidak boleh kosong",
@@ -79,13 +86,20 @@ class CampaignController extends Controller
 
         $namaFile = time() . rand(100, 999) . "." . $nm->getClientOriginalExtension();
 
-        $this->new_campaign->waktu = $request->waktu;
-        $this->new_campaign->detail = $request->detail;
-        $this->new_campaign->nama = $request->nama;
-        $this->new_campaign->img = $namaFile;
+        $campaign = Campaign::create([
+            'nama' => $request->nama,
+            'waktu' => $request->waktu,
+            'detail' => $request->detail,
+            'target_jumlah' => $request->target,
+            'img' => $namaFile, 
+            'video' => $request->video
+        ]);
+
+        $this->new_penerimaan->campaign_id = $campaign->id;
         $nm->move(public_path() . '/storage/campaign', $namaFile);
 
-        $this->new_campaign->save();
+        // $this->new_campaign->save();
+        $this->new_penerimaan->save();
         return redirect()->route('campaign')->with('status', 'successfully created');
     }
 
@@ -97,7 +111,20 @@ class CampaignController extends Controller
      */
     public function show($id)
     {
-        //
+        
+        $program_detail  = Penerimaan::join('campaign', 'campaign_id', 'campaign.id')
+            ->select('campaign.video as video', 'campaign.target_jumlah as target', 'campaign.detail as detail', 'campaign.id as id', 'campaign.waktu','campaign.nama as nama', DB::raw('sum(penerimaan.jumlah) /campaign.target_jumlah * 100 as persen'), DB::raw('sum(penerimaan.jumlah) as jumlah'), 'campaign.target_jumlah as target', 'campaign.img as img')
+            ->groupByRaw('detail, nama, target, img, waktu, id, target, video')
+            ->where('campaign.id', $id)->first();
+
+        $program_lainnya  = Penerimaan::join('campaign', 'campaign_id', 'campaign.id')
+            ->select('campaign.video as video', 'campaign.target_jumlah as target', 'campaign.detail as detail', 'campaign.id as id', 'campaign.waktu','campaign.nama as nama', DB::raw('sum(penerimaan.jumlah) /campaign.target_jumlah * 100 as persen'), DB::raw('sum(penerimaan.jumlah) as jumlah'), 'campaign.target_jumlah as target', 'campaign.img as img')
+            ->groupByRaw('detail, nama, target, img, waktu, id, target, video')
+            ->where('campaign.id', 'not like', $program_detail->id)->limit(8)->orderBy('id', 'DESC')->get();    
+        // dd($program_lainnya);
+        return view('halaman_program.show', [
+            'program_detail' => $program_detail, 'program_lainnya' => $program_lainnya
+        ]);
     }
 
     /**

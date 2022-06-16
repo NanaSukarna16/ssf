@@ -12,6 +12,8 @@ use App\Http\Controllers\RelawanController;
 use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\CampaignController;
 use App\Http\Controllers\TentangController;
+use App\Http\Controllers\DownloadController;
+use App\Http\Controllers\DonasiController;
 use App\Models\HalHome;
 use Illuminate\Support\Facades\Route;
 
@@ -129,6 +131,20 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/campaign/edit/{id}', [CampaignController::class, 'edit'])->name('campaign.edit');
     Route::post('campaign/update/{id}', [CampaignController::class, 'update'])->name('campaign.update');
     Route::get('/campaign/destroy/{id}', [CampaignController::class, 'destroy'])->name('campaign.destroy');
+
+    Route::get('/download', [DownloadController::class, 'index'])->name('download');
+    Route::get('/download/create', [DownloadController::class, 'create'])->name('download.create');
+    Route::post('download/store', [DownloadController::class, 'store'])->name('download.store');
+    Route::get('/download/edit/{id}', [DownloadController::class, 'edit'])->name('download.edit');
+    Route::post('download/update/{id}', [DownloadController::class, 'update'])->name('download.update');
+    Route::get('/download/destroy/{id}', [DownloadController::class, 'destroy'])->name('download.destroy');
+
+    Route::get('/tentang', [TentangController::class, 'index'])->name('tentang_admin');
+    Route::get('/tentang/create', [TentangController::class, 'create'])->name('tentang.create');
+    Route::post('/tentang/store', [TentangController::class, 'store'])->name('tentang.store');
+    Route::get('/tentang/edit/{id}', [TentangController::class, 'edit'])->name('tentang.edit');
+    Route::post('/tentang/update/{id}', [TentangController::class, 'update'])->name('tentang.update');
+    Route::get('/tentang/destroy/{id}', [TentangController::class, 'destroy'])->name('tentang.destroy');
 });
 
 // Route::get('/login', [LoginController::class, 'index'])->name('login');
@@ -138,7 +154,11 @@ Route::get('/', [HalHomeController::class, 'index1'])->name('web');
 
 Route::get('/berita', [BeritaController::class, 'index1'])->name('berita');
 Route::get('/berita/show/{id}', [BeritaController::class, 'show'])->name('berita.show');
-
 Route::get('/program', [CampaignController::class, 'index1'])->name('program_web');
-
-Route::get('/tentang_kami', [TentangController::class, 'index'])->name('tentang');
+Route::get('/program/show/{id}', [CampaignController::class, 'show'])->name('program.show');
+Route::get('/download-berkas-ssf', [DownloadController::class, 'index1'])->name('halaman_download');
+Route::get('/profil-ssf', [TentangController::class, 'index1'])->name('tentang');
+Route::get('/visi-misi-legalitas-ssf', [TentangController::class, 'index1'])->name('visi');
+Route::get('/donasi-ssf', [DonasiController::class, 'index'])->name('donasi');
+Route::get('/donasi-ssf/{id}', [DonasiController::class, 'index1'])->name('donasi2');
+Route::post('donasi-ssf/store', [DonasiController::class, 'store'])->name('donasi.store');

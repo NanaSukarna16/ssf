@@ -65,11 +65,11 @@
                             <option value="testimoni">Testimoni Tokoh</option>
                             <option value="penerima">Penerima Manfaat</option>
                     
-                            @error('jenis')
+                            {{-- @error('jenis')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
-                            @enderror
+                            @enderror --}}
                         </select>
                     </div>
                 </div>

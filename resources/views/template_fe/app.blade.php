@@ -35,6 +35,21 @@
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <style>
+        .videoWrapper {
+            position: relative;
+            width: 100%;
+            height: 0;
+            padding-bottom: 56.25%;
+        }
+        .video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
 
 </head>
 
@@ -109,10 +124,23 @@
                 <div class="collapse navbar-collapse" id="navbar-menu">
                     <ul class="nav navbar-nav ml-auto" data-in="fadeInDown" data-out="fadeOutUp">
                         <li class="nav-item"><a class="nav-link" href="{{ route('web')}}">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{{ route('tentang')}}">Tentang Kami</a></li>
+                        {{-- <li class="nav-item"><a class="nav-link" href="{{ route('tentang')}}">Tentang Kami</a></li> --}}
+                        <li class="dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
+                              Tentang Kami <i class="fa fa-angle-double-down"></i>
+                            </a>  
+                            <ul class="dropdown-menu">
+                                @foreach ($tentang as $item)
+                                    <li><a href="#">{{ $item->nama }}</a></li> 
+                                @endforeach
+                               
+                                {{-- <li><a href="cart.html">Struktur Organisasi</a></li> --}}
+                            </ul>
+                        </li>
                         <li class="nav-item"><a class="nav-link" href="{{ route('program_web')}}">Program</a></li>
-                        <li class="nav-item"><a class="nav-link" href="gallery.html">Donasi/Konfirmasi</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('donasi')}}">Donasi</a></li>
                         <li class="nav-item"><a class="nav-link" href="{{ route('berita')}}">Berita</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('halaman_download') }}">Download</a></li>
                     </ul>
                 </div>
                 <!-- /.navbar-collapse -->

@@ -5,30 +5,7 @@
  <!-- Start About Page  -->
  <div class="about-box-main">
     <div class="container">
-        <div class="row">
-            <div class="col-lg-6">
-                <div class="banner-frame"> <img class="img-fluid" src="{{ asset('template_fe') }}//images/SSF.png" width="100%" alt="" />
-                </div>
-            </div>
-            <div class="col-lg-6">
-                <h2 class="noo-sh-title-top">Profil <br> <span style="color: rgb(243, 143, 29);">SEBI SOCIAL FUND</span></h2> <hr>
-                <p> <b>SEBI Social Fund (SSF) adalah lembaga Filantropi Islam yang 
-                    dibentuk oleh STEI SEBI pada tahun 2013. Dalam perjalanannya 
-                    SSF menjalankan operasional kenaziran dari Nazir Wakaf Uang 
-                    Yayasan Bina Tsaqofah dan juga sebagai mitra Lembaga Amil Zakat 
-                    (LAZ) Zakat Sukses. Lembaga ini berupaya mengakses potensi 
-                    dana-dana sosial seperti Zakat, Infak, Sedekah, Wakaf (ZISWAF) 
-                    dan Corporate Social Responsibility (CSR) serta dana sosial lain 
-                    yang bersumber dari berbagai kalangan stakeholder.
-                    Langkah ini sebagai wujud turut serta membantu sumber 
-                    pendanaan untuk program beasiswa pendidikan dan sumber 
-                    pendanaan untuk pembangunan berbagai sarana dan prasarana 
-                    (infrastruktur) kampus yang memadai sebagai bagian dari 
-                    peningkatan proses kualitas pendidikan yang baik. </b> </p>
-                {{-- <a class="btn hvr-hover" href="#">Read More</a> --}}
-            </div>
-        </div>
-        {{-- <div class="row my-5">
+        <div class="row my-5">
             <div class="col-sm-6 col-lg-4">
                 <div class="service-block-inner">
                     <h3> <b> Visi </b> </h3>
@@ -98,7 +75,7 @@
                 </div>
             </div>
         </div>
-        <div class="container" style="margin-top: -80px">
+        {{-- <div class="container" style="margin-top: -80px">
             <div class="row">
                 <div class="col-12 text-center">
                     <h2 class="noo-sh-title">STRUKTUR CREATIVE OFFICER</h2>
