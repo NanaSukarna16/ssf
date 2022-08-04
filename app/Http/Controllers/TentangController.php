@@ -30,13 +30,24 @@ class TentangController extends Controller
         ]);
     }
 
-    public function index1()
+    public function index1($id)
     {
-        $data = Tentang::all();
-
-        return view('template_fe.app', [
-            'tentang' => $data
+        $data = DB::select("SELECT * FROM profil WHERE tentang_id = $id");
+        $data2 = Tentang::all();
+        $data3 = DB::select("SELECT * FROM visi WHERE tentang_id = $id");
+        $data4 = DB::select("SELECT * FROM nazhir WHERE tentang_id = $id");
+        $data5 = DB::select("SELECT * FROM struktur WHERE tentang_id = $id");
+        $data6 =  Tentang::Where('id', $id)
+            ->first();
+        return view('halaman_tentang.index', [
+            'nazhir' => $data4, 'struktur' => $data5, 'tentang2' => $data6,
+            'visi' => $data3 ,'profil' => $data, 'tentang' => $data2
         ]);
+        // $data = Tentang::all();
+
+        // return view('template_fe.app', [
+        //     'tentang' => $data
+        // ]);
     }
 
     /**

@@ -51,6 +51,7 @@
                         <h1>  <b> {{ $program_detail->nama }} </b></h1>
                         <h3>Deskripsi Program</h3>
 						<p>{{ $program_detail->detail}}</p>
+                        {{-- <a href="whatsapp://send?text=http://localhost:8000/program/show/{{ $program_detail->id }}">Bagikan ke WhatsApp</a> --}}
                         <h3>Jumlah Dana Yang di Butuhkan</h3>
                         <h2 style="color: #fbb714">Rp {{number_format($program_detail->target ?? 0, 2)}}</h2>
                         <div class="progress">

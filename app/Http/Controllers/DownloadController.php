@@ -67,7 +67,7 @@ class DownloadController extends Controller
     {
         $rules = [
             'img' => "required|mimes:png,jpg,jpeg",
-            'file' => "required|mimes:pdf",
+            'file' => ['required', 'mimes:pdf', 'max:500'],
             'nama' => "required"
         ];
         $messages = [

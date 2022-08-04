@@ -129,9 +129,9 @@
                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
                               Tentang Kami <i class="fa fa-angle-double-down"></i>
                             </a>  
-                            <ul class="dropdown-menu">
+                            <ul class="dropdown-menu" style="background-color: rgb(247, 247, 247)">
                                 @foreach ($tentang as $item)
-                                    <li><a href="#">{{ $item->nama }}</a></li> 
+                                    <li><a href="{{ route('tentang.index1', $item->id)}}">{{ $item->nama }}</a></li> 
                                 @endforeach
                                
                                 {{-- <li><a href="cart.html">Struktur Organisasi</a></li> --}}
@@ -217,10 +217,9 @@
                         <div class="footer-link-contact">
                             <h4>Peta Lokasi</h4>
                             <ul class="list-time">
-                                {{-- <li>Monday - Friday: 08.00am to 05.00pm</li>
-                                <li>Saturday: 10.00am to 08.00pm</li>
-                                <li>Sunday: <span>Closed</span></li> --}}
-                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3964.866125435333!2d106.73039401413953!3d-6.411240164484039!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69e89a52e32555%3A0x10dd01ee40d29b15!2sSTEI%20SEBI!5e0!3m2!1sid!2sus!4v1640761949884!5m2!1sid!2sus" width="340" height="250" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                                <div class="embed-resonsive-16by9">
+                                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3964.866125435333!2d106.73039401413953!3d-6.411240164484039!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69e89a52e32555%3A0x10dd01ee40d29b15!2sSTEI%20SEBI!5e0!3m2!1sid!2sus!4v1640761949884!5m2!1sid!2sus" width="340" height="250" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                                </div>            
                             </ul>
                         </div>
                     </div>

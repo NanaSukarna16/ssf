@@ -24,7 +24,7 @@
                             mitra strategis dalam pengembangan SDM yang
                             profesional di bidang Ekonomi Syariah.
                         </li>
-                        <li style="list-style: disc">
+                        {{-- <li style="list-style: disc">
                             Melakukan penjajakan secara masif kepada
                             stakeholders potensial untuk dijadikan sebagai
                             mitra strategis dalam pengembangan SDM yang
@@ -41,7 +41,7 @@
                             stakeholders potensial untuk dijadikan sebagai
                             mitra strategis dalam pengembangan SDM yang
                             profesional di bidang Ekonomi Syariah.
-                        </li>
+                        </li> --}}
                     </ul>
                 </div>
             </div>

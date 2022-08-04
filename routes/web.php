@@ -14,6 +14,10 @@ use App\Http\Controllers\CampaignController;
 use App\Http\Controllers\TentangController;
 use App\Http\Controllers\DownloadController;
 use App\Http\Controllers\DonasiController;
+use App\Http\Controllers\ProfilController;
+use App\Http\Controllers\VisiController;
+use App\Http\Controllers\NazhirController;
+use App\Http\Controllers\StrukturController;
 use App\Models\HalHome;
 use Illuminate\Support\Facades\Route;
 
@@ -81,7 +85,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/manage-users/edit/{id}', [RelawanController::class, 'edit1'])->name('user.edit');
     Route::post('manage-users/update/{id}', [RelawanController::class, 'update1'])->name('user.update');
    
-
     Route::get('/penerimaan', [PenerimaanController::class, 'index'])->name('penerimaan');
     Route::get('/penerimaan/by_donatur', [PenerimaanController::class, 'penerimaanByDonatur'])->name('penerimaanByDonatur');
     Route::get('/penerimaan/create', [PenerimaanController::class, 'create'])->name('penerimaan.create');
@@ -145,6 +148,34 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/tentang/edit/{id}', [TentangController::class, 'edit'])->name('tentang.edit');
     Route::post('/tentang/update/{id}', [TentangController::class, 'update'])->name('tentang.update');
     Route::get('/tentang/destroy/{id}', [TentangController::class, 'destroy'])->name('tentang.destroy');
+
+    Route::get('/profil', [ProfilController::class, 'index'])->name('profil');
+    Route::get('/profil/create', [ProfilController::class, 'create'])->name('profil.create');
+    Route::post('/profil/store', [ProfilController::class, 'store'])->name('profil.store');
+    Route::get('/profil/edit/{id}', [ProfilController::class, 'edit'])->name('profil.edit');
+    Route::post('/profil/update/{id}', [ProfilController::class, 'update'])->name('profil.update');
+    Route::get('/profil/destroy/{id}', [ProfilController::class, 'destroy'])->name('profil.destroy');
+
+    Route::get('/visi', [VisiController::class, 'index'])->name('visi');
+    Route::get('/visi/create', [VisiController::class, 'create'])->name('visi.create');
+    Route::post('/visi/store', [VisiController::class, 'store'])->name('visi.store');
+    Route::get('/visi/edit/{id}', [VisiController::class, 'edit'])->name('visi.edit');
+    Route::post('/visi/update/{id}', [VisiController::class, 'update'])->name('visi.update');
+    Route::get('/visi/destroy/{id}', [VisiController::class, 'destroy'])->name('visi.destroy');
+
+    Route::get('/nazhir', [NazhirController::class, 'index'])->name('nazhir');
+    Route::get('/nazhir/create', [NazhirController::class, 'create'])->name('nazhir.create');
+    Route::post('/nazhir/store', [NazhirController::class, 'store'])->name('nazhir.store');
+    Route::get('/nazhir/edit/{id}', [NazhirController::class, 'edit'])->name('nazhir.edit');
+    Route::post('/nazhir/update/{id}', [NazhirController::class, 'update'])->name('nazhir.update');
+    Route::get('/nazhir/destroy/{id}', [NazhirController::class, 'destroy'])->name('nazhir.destroy');
+
+    Route::get('/struktur', [StrukturController::class, 'index'])->name('struktur');
+    Route::get('/struktur/create', [StrukturController::class, 'create'])->name('struktur.create');
+    Route::post('/struktur/store', [StrukturController::class, 'store'])->name('struktur.store');
+    Route::get('/struktur/edit/{id}', [StrukturController::class, 'edit'])->name('struktur.edit');
+    Route::post('/struktur/update/{id}', [StrukturController::class, 'update'])->name('struktur.update');
+    Route::get('/struktur/destroy/{id}', [StrukturController::class, 'destroy'])->name('struktur.destroy');
 });
 
 // Route::get('/login', [LoginController::class, 'index'])->name('login');
@@ -158,7 +189,8 @@ Route::get('/program', [CampaignController::class, 'index1'])->name('program_web
 Route::get('/program/show/{id}', [CampaignController::class, 'show'])->name('program.show');
 Route::get('/download-berkas-ssf', [DownloadController::class, 'index1'])->name('halaman_download');
 Route::get('/profil-ssf', [TentangController::class, 'index1'])->name('tentang');
-Route::get('/visi-misi-legalitas-ssf', [TentangController::class, 'index1'])->name('visi');
+// Route::get('/visi-misi-legalitas-ssf', [TentangController::class, 'index1'])->name('visi');
 Route::get('/donasi-ssf', [DonasiController::class, 'index'])->name('donasi');
 Route::get('/donasi-ssf/{id}', [DonasiController::class, 'index1'])->name('donasi2');
 Route::post('donasi-ssf/store', [DonasiController::class, 'store'])->name('donasi.store');
+Route::get('/tentang-kami/{id}', [TentangController::class, 'index1'])->name('tentang.index1');

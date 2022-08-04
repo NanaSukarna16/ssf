@@ -111,6 +111,7 @@ class CampaignController extends Controller
      */
     public function show($id)
     {
+        $data = Tentang::all();
         
         $program_detail  = Penerimaan::join('campaign', 'campaign_id', 'campaign.id')
             ->select('campaign.video as video', 'campaign.target_jumlah as target', 'campaign.detail as detail', 'campaign.id as id', 'campaign.waktu','campaign.nama as nama', DB::raw('sum(penerimaan.jumlah) /campaign.target_jumlah * 100 as persen'), DB::raw('sum(penerimaan.jumlah) as jumlah'), 'campaign.target_jumlah as target', 'campaign.img as img')
@@ -123,7 +124,7 @@ class CampaignController extends Controller
             ->where('campaign.id', 'not like', $program_detail->id)->limit(8)->orderBy('id', 'DESC')->get();    
         // dd($program_lainnya);
         return view('halaman_program.show', [
-            'program_detail' => $program_detail, 'program_lainnya' => $program_lainnya
+            'tentang' => $data, 'program_detail' => $program_detail, 'program_lainnya' => $program_lainnya
         ]);
     }
 

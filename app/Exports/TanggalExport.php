@@ -18,7 +18,6 @@ class TanggalExport implements FromCollection, WithHeadings
         $donatur = Penerimaan::get();
         // dd($donatur);
         foreach ($donatur as $key => $value) {
-
             return Penerimaan::leftJoin('users', 'penerimaan.users_id', 'users.id')
                 ->leftJoin('prog_penerimaan', 'penerimaan.prog_penerimaan_id', 'prog_penerimaan.id')
                 ->leftJoin('grup', 'penerimaan.grup_id', 'grup.id')

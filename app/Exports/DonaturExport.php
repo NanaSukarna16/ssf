@@ -36,7 +36,6 @@ class DonaturExport implements FromCollection, WithHeadings
 
     public function headings(): array
     {
-
         return [
             'Kode',
             'Nama Donatur',
